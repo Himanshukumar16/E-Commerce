@@ -1,5 +1,6 @@
 package E_commerce.practice2.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -25,7 +26,10 @@ public class Product {
     private String brand;
     private BigDecimal price;
     private String category;
+
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
     private Date releaseDate;
+
     private Boolean productAvailable;
     private Integer stockQuantity;
 
