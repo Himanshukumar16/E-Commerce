@@ -5,7 +5,6 @@ import E_commerce.practice2.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
-
 import java.io.IOException;
 import java.util.List;
 
@@ -35,6 +34,15 @@ public class ProductService {
 
     public Product addProduct(Product product, MultipartFile image) throws IOException {
 
+        product.setImageName(image.getOriginalFilename());
+        product.setImageType(image.getContentType());
+        product.setImageData(image.getBytes());
+        return productRepository.save(product);
+    }
+
+    public Product UpdateProduct(Integer id, Product product, MultipartFile image) throws IOException {
+
+        product.setId(id);
         product.setImageName(image.getOriginalFilename());
         product.setImageType(image.getContentType());
         product.setImageData(image.getBytes());

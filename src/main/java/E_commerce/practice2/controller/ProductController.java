@@ -7,7 +7,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-
 import java.io.IOException;
 import java.util.List;
 
@@ -59,6 +58,17 @@ public class ProductController {
             createdProduct = productService.addProduct(product, imageFile);
             return new ResponseEntity<>(createdProduct, HttpStatus.CREATED);
         } catch (IOException e) {
+            return new ResponseEntity<>(e.getLocalizedMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @PutMapping("/product/{id}")
+    public ResponseEntity<String> updateProduct(@PathVariable Integer id, @RequestPart Product product, @RequestPart MultipartFile imageFile) {
+        Product updateProduct = null;
+        try {
+            updateProduct = productService.UpdateProduct(id,product,imageFile);
+            return new ResponseEntity<>("Updated !", HttpStatus.OK);
+        } catch (Exception e) {
             return new ResponseEntity<>(e.getLocalizedMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
