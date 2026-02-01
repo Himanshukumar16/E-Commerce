@@ -48,4 +48,12 @@ public class ProductService {
         product.setImageData(image.getBytes());
         return productRepository.save(product);
     }
+
+    public void deleteProduct(int id) {
+        productRepository.deleteById(id);
+    }
+
+    public List<Product> searchProduct(String keyword) {
+        return productRepository.searchProduct(keyword);
+    }
 }
