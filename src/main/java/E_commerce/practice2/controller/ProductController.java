@@ -68,7 +68,7 @@ public class ProductController {
             updateProduct = productService.UpdateProduct(id, product, imageFile);
             return new ResponseEntity<>("Updated !", HttpStatus.OK);
         } catch (Exception e) {
-            return new ResponseEntity<>(e.getLocalizedMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>("Error Occurred !", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
