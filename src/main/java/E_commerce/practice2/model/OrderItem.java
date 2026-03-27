@@ -1,13 +1,7 @@
 package E_commerce.practice2.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 import lombok.*;
-import org.springframework.beans.factory.FactoryBean;
-import org.springframework.beans.factory.annotation.Autowired;
-
 import java.math.BigDecimal;
 
 @Entity
@@ -17,8 +11,8 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 public class OrderItem {
 
-
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @ManyToOne
@@ -29,5 +23,4 @@ public class OrderItem {
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Order order;
-
 }

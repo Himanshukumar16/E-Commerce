@@ -5,7 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
-
 import java.time.LocalDate;
 import java.util.List;
 
@@ -16,6 +15,7 @@ import java.util.List;
 @AllArgsConstructor
 public class Order {
 
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private Long id;
 
